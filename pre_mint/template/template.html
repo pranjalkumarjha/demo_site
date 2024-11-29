@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <link rel="stylesheet" href="template.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist" rel="stylesheet">
+    <title>Template</title>
+    
+    <style>
+      /* Progress Bar Styles */
+      .progress-container {
+        width: 20%; /* Full width for the progress bar container */
+        height: 2px;
+        background: var(--Fills-Secondary, rgba(120, 120, 128, 0.16));
+        overflow: hidden;
+        position: relative;
+      }
+
+      .progress-bar-colored {
+        height: 100%;
+        background-color: rgba(0, 122, 255, 1);
+        width: 0%; /* Start at 0%, will be updated via JS */
+      }
+
+      .progress-bar-uncolored {
+        height: 100%;
+        background: var(--Fills-Secondary, rgba(120, 120, 128, 0.16));
+        width: 100%;
+      }
+
+      /* Blurred background effect */
+    
+
+      /* Modal styling */
+      .rule-modal {
+          position: fixed; /* Fix the position to the viewport */
+          top: 45%; /* Center vertically */
+          left: 50%; /* Center horizontally */
+          transform: translate(-50%, -50%); /* Adjust for the element's size */
+          color: white; /* Text color */
+          z-index: 1000; /* Ensure it's on top */
+          width: 80%; /* Modal width */
+          height: 80%;
+          padding: 5px 5px;
+      }
+      .connect-modal{
+        top:50%; 
+        width: 25%; 
+        height: 50%;
+      }
+
+      .overlay {
+          position: fixed; /* Cover the entire viewport */
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%; 
+          border-radius: 10px;
+          background: rgba(217, 217, 217, 0.1); /* Desired overlay color */
+          z-index: 500; /* Ensure it is below the modal */
+      }
+      /* Table styling */
+      table {
+          width: 100%;
+          border-collapse: collapse; /* Merge table borders */
+          margin-top: 20px; /* Space above the table */
+      }
+
+      th, td {
+          padding: 10px; /* Space inside cells */
+          text-align: left; /* Align text to the left */
+      }
+
+      th {
+          font-weight: bold; /* Bold font for header */
+      } 
+      .blur-background {
+          filter: blur(4px); /* Adjust blur strength as needed */
+      }
+
+
+.cursor-circle {
+    position: absolute;
+    width: 5px; /* Size of the main circle */
+    height: 5px; /* Size of the main circle */
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8); /* Reduced opacity */
+    pointer-events: none; 
+    filter: blur(2px); 
+    filter: brightness(1px);
+    will-change: transform, box-shadow; /* Indicate that shadows will change */
+    box-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.5), /* Inner glow */
+        0 0 20px rgba(255, 255, 255, 0.3), /* Outer glow */
+        0 0 30px rgba(255, 255, 255, 0.1), /* Soft fade */
+        0 0 20px rgba(255, 255, 255, 0.5), /* Reduced brightness */
+            0 0 40px rgba(255, 255, 255, 0.4), /* Reduced brightness */
+            0 0 60px rgba(255, 255, 255, 0.3), /* Reduced brightness */
+            0 0 80px rgba(255, 255, 255, 0.2), /* Reduced brightness */
+            0 0 100px rgba(255, 255, 255, 0.1), /* Reduced brightness */
+            0 0 120px rgba(255, 255, 255, 0.1), /* Reduced brightness */
+            0 0 160px rgba(255, 255, 255, 0.05), /* Reduced brightness */
+            0 0 200px rgba(255, 255, 255, 0.05); /* Reduced brightness */
+}
+
+.cursor-circle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%; /* Scale the pulsating circle to be larger */
+    height: 300%; /* Scale the pulsating circle to be larger */
+    background-color: rgba(255, 255, 255, 0.1); /* Further reduce opacity */
+    border-radius: 50%;
+    filter: blur(5px);
+    transform: translate(-50%, -50%) scale(3);
+    z-index: -1; /* Behind the main circle */
+    animation: pulsate 2s infinite ease-in-out;
+}
+
+
+/* Pulsate animation affects both the circle and the shadow */
+@keyframes pulsate {
+    0% {
+        box-shadow: 
+            inset 0 0 8px rgba(255, 255, 255, 0.5), /* Reduced brightness */
+            inset 0 0 15px rgba(255, 255, 255, 0.4), /* Reduced brightness */
+            inset 0 0 20px rgba(255, 255, 255, 0.3), /* Reduced brightness */
+            inset 0 0 30px rgba(255, 255, 255, 0.2), /* Reduced brightness */
+            0 0 20px rgba(255, 255, 255, 0.5), /* Reduced brightness */
+            0 0 40px rgba(255, 255, 255, 0.4), /* Reduced brightness */
+            0 0 60px rgba(255, 255, 255, 0.3), /* Reduced brightness */
+            0 0 80px rgba(255, 255, 255, 0.2), /* Reduced brightness */
+            0 0 100px rgba(255, 255, 255, 0.1), /* Reduced brightness */
+            0 0 120px rgba(255, 255, 255, 0.1), /* Reduced brightness */
+            0 0 160px rgba(255, 255, 255, 0.05), /* Reduced brightness */
+            0 0 200px rgba(255, 255, 255, 0.05); /* Reduced brightness */
+           
+    }
+    50% {
+        box-shadow: 
+            inset 0 0 10px rgba(255, 255, 255, 0.7), /* Reduced brightness */
+            inset 0 0 20px rgba(255, 255, 255, 0.5), /* Reduced brightness */
+            inset 0 0 30px rgba(255, 255, 255, 0.4), /* Reduced brightness */
+            inset 0 0 40px rgba(255, 255, 255, 0.3), /* Reduced brightness */
+            0 0 30px rgba(255, 255, 255, 0.6), /* Reduced brightness */
+            0 0 60px rgba(255, 255, 255, 0.5), /* Reduced brightness */
+            0 0 80px rgba(255, 255, 255, 0.4), /* Reduced brightness */
+            0 0 100px rgba(255, 255, 255, 0.3), /* Reduced brightness */
+            0 0 120px rgba(255, 255, 255, 0.2), /* Reduced brightness */
+            0 0 140px rgba(255, 255, 255, 0.1), /* Reduced brightness */
+            0 0 180px rgba(255, 255, 255, 0.1), /* Reduced brightness */
+            0 0 220px rgba(255, 255, 255, 0.05); /* Reduced brightness */
+    }
+    100% {
+        box-shadow: 
+            inset 0 0 8px rgba(255, 255, 255, 0.5), /* Reduced brightness */
+            inset 0 0 15px rgba(255, 255, 255, 0.4), /* Reduced brightness */
+            inset 0 0 20px rgba(255, 255, 255, 0.3), /* Reduced brightness */
+            inset 0 0 30px rgba(255, 255, 255, 0.2), /* Reduced brightness */
+            0 0 20px rgba(255, 255, 255, 0.5), /* Reduced brightness */
+            0 0 40px rgba(255, 255, 255, 0.4), /* Reduced brightness */
+            0 0 60px rgba(255, 255, 255, 0.3), /* Reduced brightness */
+            0 0 80px rgba(255, 255, 255, 0.2), /* Reduced brightness */
+            0 0 100px rgba(255, 255, 255, 0.1), /* Reduced brightness */
+            0 0 120px rgba(255, 255, 255, 0.1), /* Reduced brightness */
+            0 0 160px rgba(255, 255, 255, 0.05), /* Reduced brightness */
+            0 0 200px rgba(255, 255, 255, 0.05); /* Reduced brightness */
+    }
+}
+.rightside-content {
+    perspective: 1000px; /* Enable 3D space for the child elements */
+    display: inline-block; /* Ensure the div wraps tightly around the image */
+    position: relative; /* Required for absolute positioning of the card */
+}
+.card {
+    display: block; /* Make the image block level for easier manipulation */
+    transition: transform 0.1s ease, box-shadow 0.1s ease; /* Smooth transition for transform and shadow */
+    will-change: transform, box-shadow; /* Optimize for animations */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Default shadow */
+}
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="behind-main-container add-blur">
+        <div class="main-container"> 
+            <div class="navbar">
+                <div class="upper-navbar">
+                    <div class="three-dots">
+                        <img src="ellipse.png" alt="">
+                        <img src="ellipse.png" alt=""> 
+                        <img src="ellipse.png" alt="">
+                    </div> 
+                </div>
+                <div class="mid-navbar">
+                    <div class="my-allocation-button" id="dutch-auction-rule" onclick="handleruleonclick()">Dutch Auction Rule</div> 
+                    <div class="my-allocation-button" id="connect-button" onclick="handleconnectonclick()">Connect Wallet</div>
+                </div> 
+                <div class="lower-navbar"><img src="logo.png" alt="Galactic-kingdom-logo" class="logo"></div>    
+            </div>
+            <div class="main-content">
+                <div class="leftside-content">
+                    <div>
+                        <div style="font-weight: 700; font-size: 2rem;padding-bottom: 10px;" id="conquerer-secured">0 GALACTIC KINGDOM CONQUERES HAVE BEEN SECURED</div>
+                        <div style="font-weight: 700;padding-bottom: 5px;">CLAIM YOUR INSCRIPTION ON MAGIC EDEN SOON</div> 
+                        <div style="font-weight: 700;">FOLLOW &lt;@GALACTICKINGDOM&gt; ON X</div>
+                    </div>
+                    <div>
+                        <div style="display: flex; flex-direction: row; font-weight: 400;" id="current-recent-price-toggle"><div>Current Price: </div><div id="price">1E-8BTC</div></div>
+                        <div style="display: flex; flex-direction: row; font-weight: 400;"><div id="current-value">200</div><div>/</div><div id="total-value">740</div><div>Secured</div></div> 
+                        <div class="progress-container">
+                            <div class="progress-bar-colored"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightside-content">
+                    <div class="glare-card">
+                        <img src="card.png" alt="card" class="card">
+                    </div>
+                </div>
+            </div> 
+            <div class="bottom-table" style="display: flex;flex-direction: column;">
+                <div style="font-weight: 600;display: flex;flex-direction: row;justify-content: space-around;font-size: 1.2rem;text-decoration: underline;">Auction Status</div>
+                <table>
+                    <thead style="border-bottom: solid;border-width: 1px;">
+                        <tr>
+                            <th>BID No</th>
+                            <th>TX</th>
+                            <th>Address</th>
+                            <th>BID Value</th>
+                            <th>Conquer Secured</th>
+                            <th>Refund</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+       
+    </div>
+    <div class="overlay" id="overlay" hidden></div>
+
+    <div class=" rule-modal behind-main-container " hidden>
+        <div class="main-container" style="display: flex;flex-direction: column;font-weight: 700;">
+            <div style="text-decoration: underline;display: flex; flex-direction: row; justify-content: space-around;font-size: 1.2rem;padding-bottom: 50px;">Dutch Auction Rule</div>
+            <div>
+                &#x2022; 740 Genesis Conquerors for auction
+            </div> 
+            <div>
+                &#x2022; Only WL Adresses bids will be valid
+            </div><div>
+                &#x2022; DA starts with a Price of 0,1 $BTC
+            </div><div>
+                &#x2022; Every 6 blocks(~1hours) Price drops by 0.005
+            </div><div>
+                &#x2022; Everyone pays the clearing Price in the end
+            </div><div>
+                &#x2022; First 7200 bids win
+            </div><div>
+                &#x2022; A single tx Can have multiple bids ( BTC amount/ Clearing price)
+            </div><div>
+                &#x2022; If Price reaches our Reserve Price(0.005 $BTC) or bids total reach max, DA ends
+            </div><div>
+                &#x2022; In the case DA ends without selling out(reaching reserve price), Public gets half a day to send bids AT reserve Price first Come first served, and then all the remaining will be owned by the DAO
+            </div>
+        </div>
+    </div>
+    <div class=" connect-modal rule-modal behind-main-container" hidden> 
+        <div class="main-container" style="display: flex;flex-direction: column; gap: 100px;font-size: 1.3rem;">
+            <div style="display: flex;text-decoration: underline;font-weight: 700;justify-content: space-around;">Select a Wallet</div>
+            <div style="display: flex;font-weight: 400;justify-content: space-around;">Xverse</div>
+            <div style="display: flex;font-weight: 400;justify-content: space-around;">Unisat</div>
+        </div>
+    </div>
+</body>
+
+<script>
+    // Set the values for current and total progress
+    let current_value = Number(document.getElementById('current-value').textContent);
+    let total_value = Number(document.getElementById('total-value').textContent);
+
+    // Calculate the percentage progress
+    let progress_percent = (current_value / total_value) * 100;
+
+    // Set the width of the progress bar based on percentage
+    let progressBar = document.querySelector('.progress-bar-colored');
+    progressBar.style.width = progress_percent + '%';
+   
+</script>
+<script>
+  function handleruleonclick() {
+    let content = document.querySelector('.rule-modal');
+    let mainContainer = document.querySelector('.add-blur');
+    let overlay = document.getElementById('overlay');
+    // Toggle modal visibility
+    content.hidden = !content.hidden;
+    overlay.hidden = !overlay.hidden; // Toggle overlay visibility
+    // Toggle blur effect on main content
+    if (content.hidden) {
+        mainContainer.classList.remove('blur-background');
+    } else {
+        mainContainer.classList.add('blur-background');
+    }
+
+    // Centering and margin adjustments if needed
+    content.style.marginTop = '40px'; 
+    content.style.marginBottom = '40px'; 
+    content.style.marginLeft = '20px'; 
+    content.style.marginRight = '20px'; 
+    
+  }  
+  window.addEventListener('click', function(event) {
+    let modal = document.querySelector('.rule-modal');
+    let overlay = document.getElementById('overlay');
+    let button = document.getElementById('dutch-auction-rule');
+
+    // Check if the modal is visible and the click is outside of it
+    if (!modal.hidden && !modal.contains(event.target) && event.target !== button) {
+        modal.hidden = true; // Hide the modal
+        overlay.hidden = true; // Hide the overlay 
+        document.querySelector('.add-blur').classList.remove('blur-background'); // Remove blur
+    }
+  });
+</script> 
+<script>
+    function handleconnectonclick() {
+    let content = document.querySelector('.connect-modal');
+    let mainContainer = document.querySelector('.add-blur');
+    let overlay = document.getElementById('overlay');
+    // Toggle modal visibility
+    content.hidden = !content.hidden;
+    overlay.hidden = !overlay.hidden; // Toggle overlay visibility
+    // Toggle blur effect on main content
+    if (content.hidden) {
+        mainContainer.classList.remove('blur-background');
+    } else {
+        mainContainer.classList.add('blur-background');
+    }
+
+    // Centering and margin adjustments if needed
+    content.style.marginTop = '40px'; 
+    content.style.marginBottom = '40px'; 
+    content.style.marginLeft = '20px'; 
+    content.style.marginRight = '20px'; 
+    
+  }  
+  window.addEventListener('click', function(event) {
+    let modal = document.querySelector('.connect-modal');
+    let overlay = document.getElementById('overlay');
+    let button = document.getElementById('connect-button');
+
+    // Check if the modal is visible and the click is outside of it
+    if (!modal.hidden && !modal.contains(event.target) && event.target !== button) {
+        modal.hidden = true; // Hide the modal
+        overlay.hidden = true; // Hide the overlay 
+        document.querySelector('.add-blur').classList.remove('blur-background'); // Remove blur
+    }
+  });
+</script> 
+<script>
+    // Create the cursor circle
+    const cursorCircle = document.createElement('div');
+    cursorCircle.classList.add('cursor-circle');
+    document.body.appendChild(cursorCircle);
+
+    // Variables to store cursor position and smooth transition
+    let mouseX = 0, mouseY = 0;
+    let circleX = 0, circleY = 0;
+    const speed = 0.1; // Adjust this for smoother or faster following
+
+    // Update mouse position on mouse move
+    document.addEventListener('mousemove', function(e) {
+        mouseX = e.pageX;
+        mouseY = e.pageY;
+    });
+
+    // Function to move the circle with lag
+    function animateCursor() {
+        // Smoothly update circle position with some lag
+        circleX += (mouseX - circleX) * speed;
+        circleY += (mouseY - circleY) * speed;
+
+        // Set the position of the circle
+        cursorCircle.style.transform = `translate(${circleX - 15}px, ${circleY - 15}px)`; // -15 to center the circle
+
+        // Request the next animation frame
+        requestAnimationFrame(animateCursor);
+    }
+
+    // Start the animation
+    animateCursor();
+</script>
+<script>
+const card = document.querySelector('.card');
+const content = document.querySelector('.rightside-content');
+
+content.addEventListener('mousemove', (e) => {
+    const { clientX, clientY } = e;
+    const { offsetWidth, offsetHeight } = content;
+    const x = ((clientX - content.offsetLeft) / offsetWidth - 0.5) * 20;
+    const y = ((clientY - content.offsetTop) / offsetHeight - 0.5) * -20;
+    
+    // Apply transform for card rotation
+    card.style.transform = `translateY(${y}px) rotateX(${y}deg) rotateY(${x}deg)`;
+
+});
+
+// Reset on mouse leave
+content.addEventListener('mouseleave', () => {
+    card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+  
+});
+
+
+</script>
+
+</html>

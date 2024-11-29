@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <link rel="stylesheet" href="store_page_style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Store page</title>
+    <style>
+        /* Hamburger icon styling */
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Show the hamburger menu on screens smaller than 768px */
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                right: 10%;
+            }
+        }
+
+        /* Right sidebar styling */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%; /* Initially hide it off the screen */
+            width: 300px;
+            height: 100%;
+            background-color: rgba(4, 17, 37, 0.95); /* Dark background */
+            color: white;
+            transition: right 0.3s ease; /* Smooth slide-in transition */
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .sidebar.open {
+            right: 0; /* Show the sidebar */
+        }
+
+        /* Sidebar close button */
+        .close-sidebar {
+            cursor: pointer;
+            align-self: flex-end;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Sidebar content (for elements in a column) */
+        .sidebar .sidebar-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between sidebar items */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="behind-main-container">
+        <div class="main-container">
+            <div class="navbar">
+                <div class="upper-navbar">
+                    <div class="three-dots">
+                        <img src="ellipse.png" alt="" style="margin-right:5px;">
+                        <img src="ellipse.png" alt="" style="margin-right:5px;">
+                        <img src="ellipse.png" alt="">
+                    </div>
+                    <div class="icons">
+                        <div class="home-button"><img src="homeicon.png" alt="home-icon"></div>
+                        <div class="button-group">
+                            <div class="back-button"><img src="prev-button.png" alt="previous-button"></div>
+                            <div class="next-button"><img src="next-button.png" alt="next-button"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lower-navbar">
+                    <div class="icon" style="display: flex; align-items: center;">
+                        <img src="logo.png" alt="Galactic-kingdom-logo">
+                        <!-- Hamburger menu icon to be shown on small screens -->
+                        <div class="hamburger-menu" id="hamburger-menu">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white"
+                                class="bi bi-list" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <div>Offer Received</div>
+                        <div>Offer Sent</div>
+                        <div>Genesis Conqueror</div>
+                        <div class="my-allocation-button">Connect</div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-section">
+                    <div class="dropdown">
+                        <div class="individual-dropdown">
+                            <button class="dropbtn">Sex
+                                <i class="fa fa-caret-down"></i>
+                              </button>
+                              <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                              </div>
+                        </div>
+                        <div class="individual-dropdown">
+                            <button class="dropbtn">Race
+                                <i class="fa fa-caret-down"></i>
+                              </button>
+                              <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                              </div>
+                        </div>
+                        <div class="individual-dropdown">
+                            <button class="dropbtn">Rarity
+                                <i class="fa fa-caret-down"></i>
+                              </button>
+                              <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                              </div>
+                        </div>
+                    </div> 
+                    <div class="card-container">
+                        <div class="card">
+                            <div><img src="card.png" alt="" class="card-image"></div> 
+                            <div class="my-allocation-button">Genesis Conqueror
+                                <div>N.xxxx</div></div> 
+                            <div class="my-allocation-button">Make an Offer</div>
+                        </div>
+                        <div class="card">
+                             <div><img src="card.png" alt="" class="card-image"></div> 
+                            <div class="my-allocation-button">Genesis Conqueror
+                                <div>N.xxxx</div></div> 
+                            <div class="my-allocation-button">Make an Offer</div>
+                        </div>
+                        <div class="card">
+                             <div><img src="card.png" alt="" class="card-image"></div> 
+                            <div class="my-allocation-button">Genesis Conqueror
+                                <div>N.xxxx</div></div> 
+                            <div class="my-allocation-button">Make an Offer</div>
+                        </div>
+                        <div class="card">
+                             <div><img src="card.png" alt="" class="card-image"></div> 
+                            <div class="my-allocation-button">Genesis Conqueror
+                                <div>N.xxxx</div></div> 
+                            <div class="my-allocation-button">Make an Offer</div>
+                        </div>
+                        <div class="card">
+                             <div><img src="card.png" alt="" class="card-image"></div> 
+                            <div class="my-allocation-button">Genesis Conqueror
+                                <div>N.xxxx</div></div> 
+                            <div class="my-allocation-button">Make an Offer</div>
+                        </div>
+                        <div class="card">
+                             <div><img src="card.png" alt="" class="card-image"></div> 
+                            <div class="my-allocation-button">Genesis Conqueror
+                                <div>N.xxxx</div></div> 
+                            <div class="my-allocation-button">Make an Offer</div>
+                        </div>
+                        <div class="card">
+                             <div><img src="card.png" alt="" class="card-image"></div> 
+                            <div class="my-allocation-button">Genesis Conqueror
+                                <div>N.xxxx</div></div> 
+                            <div class="my-allocation-button">Make an Offer</div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar content -->
+    <div class="sidebar" id="sidebar">
+        <div class="close-sidebar" id="close-sidebar">&times;</div>
+        <div class="sidebar-options">
+            <div>Offer Received</div>
+            <div>Offer Sent</div>
+            <div>Genesis Conqueror</div>
+            <div class="my-allocation-button">Connect</div>
+        </div>
+    </div>
+
+    <script>
+     
+
+        // Add sidebar toggle functionality
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const sidebar = document.getElementById('sidebar');
+        const closeSidebar = document.getElementById('close-sidebar');
+
+        // Open the sidebar only if the screen width is less than 768px
+        hamburgerMenu.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+                sidebar.classList.add('open');
+            }
+        });
+
+        // Close the sidebar when the close button is clicked
+        closeSidebar.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+        });
+
+        let navbar = document.querySelector('.navbar');
+        let optionContent = document.querySelector('.options');
+        let uppernavbar = document.querySelector('.upper-navbar');
+        let threedots = document.querySelector('.three-dots');
+        let icons = document.querySelector('.icons');
+        let icon = document.querySelector('.icon');
+
+        // Function to check window size and hide/show options
+        function handleResize() {
+            if (window.innerWidth < 768) {
+                optionContent.style.display = 'none'; // Hide options on smaller screens
+                uppernavbar.removeChild(icons);
+                navbar.appendChild(icons);
+            } else {
+                optionContent.style.display = 'flex'; // Show options again on larger screens
+            }
+        }
+
+        // Initial check on page load
+        handleResize();
+
+        // Add resize event listener
+        window.addEventListener('resize', handleResize);
+    </script>
+</body>
+
+</html>

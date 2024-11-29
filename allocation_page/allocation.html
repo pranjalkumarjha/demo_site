@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no"> 
+    <link rel="stylesheet" href="allocation_styles.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist" rel="stylesheet">
+    <title>Allocation page</title>
+</head>
+<body>
+<div class="behind-main-container">
+    <div class="main-container"> 
+        <div class="navbar"> 
+            <div class="upper-navbar"> 
+                <div class="three-dots"> 
+                   <img src="ellipse.png" alt="" style="margin-right:5px;"><img src="ellipse.png" alt="" style="margin-right:5px;"><img src="ellipse.png" alt="">
+                   <div class="icon"><img src="logo.png" alt="Galactic-kingdom-logo"></div>
+                </div> 
+                
+                <div class="icons">
+                    <div class="home-button"><img src="homeicon.png" alt="home-icon"></div>  
+                    <div class="button-group">
+                        <div class="back-button"><img src="prev-button.png" alt="previous-button"></div> 
+                        <div class="next-button"><img src="next-button.png" alt="next-button"></div> 
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="content-section"> 
+            <div class="top-body-section"> 
+                <div style="font-weight: 400;font-size: 2.5rem;">
+                    Your Allocation
+                </div> 
+                <div style="font-size: 1.3rem; text-align: center;">
+                    Here are your allocation. Only the race and sex is revealed at this stage
+                </div>
+                <div class="my-allocation-button" onclick="handleclick()">Start Trading</div> 
+            </div> 
+            <div class="card-section">
+                <img src="card.png" alt="" class="card">
+                <img src="card.png" alt="" class="card">
+                <img src="card.png" alt="" class="card">
+                <img src="card.png" alt="" class="card">
+                <img src="card.png" alt="" class="card">
+                <img src="card.png" alt="" class="card">
+                <img src="card.png" alt="" class="card">
+                <img src="card.png" alt="" class="card">
+                <img src="card.png" alt="" class="card">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function handleclick(){
+        window.location = '../offer/offer.html'
+    }
+</script>
+</html>

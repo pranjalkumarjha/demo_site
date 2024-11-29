@@ -1,0 +1,239 @@
+/* General body styling */
+body {
+    margin: 0;
+    padding: 0 25px;
+    font-family: Urbanist; 
+    font-weight: 200;
+    background-color:rgba(4, 17, 37, 1);
+    color: white;
+    display: flex;
+    flex-direction: column; /* Allow for vertical stacking of items */
+    min-height: 100vh; /* Full height of the viewport */
+}
+
+/* Main container - Grid layout */
+.main-container {
+    display: grid;
+    grid-template-rows: auto 1fr; /* Keep the existing structure */
+    grid-template-columns: 1fr;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 20px;
+    border-radius: 20px;
+    background-color:rgba(4, 17, 37, 1);
+    height: 100%; /* Make it take full height */
+}
+
+/* Add a pseudo-element for the gradient border */
+.behind-main-container {
+    padding: 3.5px;
+    background: linear-gradient(to right, #8BA4A2 0%, #E29E54 44%, #A66ED0 82%, #D296B3 100%);
+    border-radius: 20px;
+    height: 100%;
+    margin: 16px 0;
+}
+
+/* Upper navbar - Flexbox with space-between */
+.navbar {
+    display: flex; /* Ensure the navbar is a flex container */
+    flex-direction: column; /* Allow vertical stacking */
+    width: 100%;
+    border-bottom: 2px solid #8CA4A1;
+    padding-bottom: 1%;
+}
+
+.upper-navbar {
+    display: flex; /* Set to flex so that child items can be ordered */
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px; /* Keep the height of the navbar consistent */
+}
+
+/* Icons section inside upper navbar */
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Increased gap between buttons */
+}
+
+/* Button group for back and next buttons */
+.button-group {
+    display: flex;
+    gap: 10px; /* Space between back and next buttons */
+}
+
+/* Icon/logo styling */
+.three-dots {
+    width: 50%;
+}
+
+.icon {
+    padding-left: 10%;
+}
+
+.icon img {
+    width: auto;
+    height: 1.5rem;
+}
+
+.card-section{
+    display: grid; 
+    padding: 0px 5px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 20px; /* Gap between grid items */ 
+    padding: 0px 5%;
+}
+.top-body-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%; /* Ensure the container takes full width */
+}
+
+.my-allocation-button {
+    background: linear-gradient(to right, #E38B61 0%, #4E1D13 100%);
+    border: none;
+    border-radius: 10px; /* Adjust border radius */
+    color: white;
+    font-weight: 600;
+    font-size: 1.5rem !important; /* Increase font size */
+    cursor: pointer;
+    width: 100%; /* Set button width to 100% of its container */
+    max-width: 400px; /* Add a max-width to prevent it from growing too wide */
+    text-align: center; 
+    align-content: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for emphasis */
+    transition: transform 0.2s ease-in-out; /* Optional scaling effect */ 
+}
+
+.my-allocation-button:hover {
+    transform: scale(1.05); /* Optional scaling on hover */
+}
+.card{
+    filter: blur(4px); /* Adjust the blur value as needed */
+}
+.card-container{
+    position: relative;
+}
+.reveal-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .reveal-button:hover {
+    background-color: #ff8833;
+  }
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 10px;
+    }
+
+    .navbar {
+        justify-content: center; 
+        align-items: center;
+        padding-bottom: 10%; 
+        height: auto; /* Allow the navbar to grow based on content */
+    }
+
+    .upper-navbar {
+        flex-direction: column; /* Stack upper navbar items vertically */
+        width: 100%; /* Full width */
+    }
+
+    .three-dots {
+        width: 100%;
+    }
+
+    .icon {
+        width: 100%; 
+        padding-left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .icons {
+        display: flex; 
+        justify-content: space-between; 
+        width: 100%;
+    }
+
+    .content-section {
+        gap: 0; /* Set the gap to zero */
+    }
+
+    .card {
+        width:100%;  
+    }
+
+    .card-section {
+        grid-template-columns: repeat(auto-fill); /* Smaller cards on mobile */
+        padding: 10px 0px;
+    }
+
+    .my-allocation-button {
+        width: 60%; /* Button width adjustment for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .card-section {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Even smaller cards for smaller devices */
+    }
+}
+
+
+/* Additional styles for better proportions */
+.icons {
+    align-items: center;
+}
+
+.home-button,
+.back-button,
+.next-button {
+    line-height: 1;
+}
+
+.icon img {
+    margin-top: 5px;
+}
+
+/* Upper navbar - Flexbox with space-between */
+.upper-navbar {
+    display: flex; /* Set to flex so that child items can be ordered */
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to the top */
+    padding: 0 20px;
+    height: 60px; /* Keep the height of the navbar consistent */
+    margin-top: 1%;
+}
+.my-allocation-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin-top: 5px; /* Reduce spacing above the button */
+}
+
+/* Media query for desktop view */
+@media (min-width: 769px) {
+    .three-dots {
+        margin-bottom: 10px; /* Adjust this value as needed */
+    }
+
+    .icon {
+        display: flex;
+        align-items: flex-start; /* Align the logo at the top */
+        margin-top: 10px; /* Adjust the margin to achieve desired alignment */
+    }
+
+    .icons {
+        align-items: center; /* Center icons vertically */
+    }
+}
